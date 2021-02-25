@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2021_02_25_031556) do
 
   create_table "ideas", charset: "utf8mb4", force: :cascade do |t|
     t.text "body", null: false
-    t.bigint "category_id", null: false
+    t.bigint "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_ideas_on_category_id"

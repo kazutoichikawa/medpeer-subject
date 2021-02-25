@@ -1,0 +1,18 @@
+<%= form_with model: @idea, url: ideas_path, class: 'registration-idea', local: true do |f| %>
+<%= render 'error_messages', model: @idea %>
+<div class="form-group">
+  <div class='form-text-wrapper'>
+    <label class="form-title">アイデア名</label>
+  <%= f.text_area :body, class:"input-default", id:"idea-name", placeholder:"アイデアを入力" %>
+</div>
+
+<div class="form-group">
+  <div class='form-text-wrapper'>
+    <label class="form-title">カテゴリー名</label>
+  <%= f.text_area :name, class:"input-default", id:"category-name", placeholder:"カテゴリを入力" %>
+</div>
+
+<div class="actions">
+  <%= f.submit "登録する" %>
+</div>
+<% end %>
