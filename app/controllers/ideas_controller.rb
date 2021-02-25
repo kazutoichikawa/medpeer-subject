@@ -1,22 +1,33 @@
 class IdeasController < ApplicationController
   def index
-    @idea = Idea.all
+    idea = Idea.all
   end
 
   def new
-    @idea = Idea.new
+    @category_idea = CategoryIdea.new
   end
 
   def create
-    @idea = Idea.create(idea_params)
-    if @idea.valid?
-      @idea.save
-      #status_code201を返す処理
+    # binding.pry
+    @category_idea = CategoryIdea.new(category_idea_params)
+    if @category_idea.valid?
+      @category_idea.save
       redirect_to action: :index
     else
-      #status_code422を返す処理
       render action: :new
     end
+    # f = (params[:name])
+    # if Category.where(name: "#{f}").count >= 1
+    #   idea = Idea.create
+    #   render status: 201, json: { status: 201, message: 'Created' }
+    # else
+    #   idea = Category.create(category_params)
+    #   Idea.create(idea_params(idea))
+    #   #status_code201を返す処理
+    #   render status: 201, json: { status: 201, message: 'Created' }
+    #   #status_code422を返す処理
+    #   # render status: 422, json: { status: 422, message: 'Unprocessable Entity' }
+    # end
   end
 
   def search
@@ -24,7 +35,8 @@ class IdeasController < ApplicationController
 end
 
 private
-
-  def idea_params
-    params.require(:idea).permit(:body)
+  def category_idea_params
+    params.require(:category_idea).permit(:name, :body)
   end
+
+  
