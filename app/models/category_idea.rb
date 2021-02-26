@@ -3,8 +3,17 @@ class CategoryIdea
   attr_accessor :name, :body
 
   def save
-    idea = Category.create(name: name)
-    Idea.create(body: body)
+     @f = name
+    if Category.where(name: "#{@f}").count >= 1 #既存
+      array = Category.where(name: "#{@f}")
+      target_record = array[0]
+      target_record.id
+      Idea.create(body: body, category_id: target_record.id)
+      
+    else #新規
+    category = Category.create(name: name)
+    Idea.create(body: body, category_id: category.id)
+    end
   end
 
 end
