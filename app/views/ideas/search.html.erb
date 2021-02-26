@@ -1,0 +1,12 @@
+<h1>検索結果</h1>  
+<ul>
+  <% @results.each do |result| %>
+  
+    <li>
+      <div>id：<%= result.id %></div>
+      <div>カテゴリ名：<%= result.category.name %></div>
+      <div>アプリ詳細：<%= result.body %></div>
+    </li>
+  <% end %>
+</ul>
+<%= link_to 'トップページへ戻る', root_path %>

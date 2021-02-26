@@ -1,5 +1,6 @@
 class IdeasController < ApplicationController
   before_action :search_idea, only: [:index, :search]
+  before_action :set_category, only: [:index, :search]
   def index
     @ideas = Idea.all
   end
@@ -38,7 +39,11 @@ private
   end
   
   def search_idea
-      @p = Category.ransack(params[:q])
+      @p = Idea.ransack(params[:q])
+  end
+
+  def set_category
+    @categorys = Category.all
   end
 
 end
