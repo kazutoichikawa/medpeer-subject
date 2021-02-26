@@ -1,33 +1,31 @@
+<h1 class="app-title">アイデア管理API</h1>
+
 <div class="idea-new">
-<%= link_to 'アイデアを登録', new_idea_path, class: "add-shop button" %>
+  <%= link_to 'アイデアを登録', new_idea_path, class: "add-idea-button" %>
 </div>
 
 <div class='search-category'>
   <%= search_form_for @p, url: search_path do |f| %>
-    <div class="form form-category">
       <div class="search-form-title"><%= f.label :category_id_eq, 'カテゴリを指定' %></div>
-      <div class="">
+      <div class="search-form">
         <%= f.collection_select :category_id_eq, @categorys, :id, :name, {include_blank: "指定なし"} %>
-        <br>
+        <%= f.submit '検索',{class: 'submit-button'} %>
       </div>
-    </div>
-    <div class="search-button">
-      <%= f.submit '検索',{class: 'submit-button'} %>
-    </div>
+    
   <% end %>
 </div>
 
 <div class='idea-list-title'>アイデア一覧</div>
 
 <div class='idea-list'>
-<ul>
-<% @ideas.each do |idea| %>
-<li>
-<div>カテゴリ名：<%= idea.category.name %></div>
-<div>アイデア詳細：<%= idea.body %></div>
-</li>
+  <ul>
+  <% @ideas.each do |idea| %>
+  <li class='detail'>
+  <div>カテゴリ名：<%= idea.category.name %></div>
+  <div>アイデア詳細：<%= idea.body %></div>
+  </li>
 
-<% end %>
-</ul>
+  <% end %>
+  </ul>
 <div>
 

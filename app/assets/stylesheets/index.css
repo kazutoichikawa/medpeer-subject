@@ -1,0 +1,42 @@
+.app-title{
+  margin: 5px 0 0 8px;
+  border-bottom: 1px solid #666666;
+  width: 150px;
+  font: 100;
+}
+
+.idea-new {
+  border-bottom: 1px solid #666666;
+  width: 150px;
+  margin: 5px 0 0 15px;
+}
+
+.add-idea-button {
+  text-decoration: none;
+}
+
+.search-form-title {
+  border-bottom: 1px solid #666666;
+  padding-top: 5px;
+  margin-left: 15px;
+  width: 150px;
+}
+
+.search-form {
+  margin: 10px 0 5px 20px ;
+}
+
+.idea-list-title {
+  margin-left: 15px;
+  width: 150px;
+  border-bottom: 1px solid #666666;
+}
+
+.idea-list {
+  margin-left: 5px;
+}
+
+.detail {
+
+  margin: 10px 0 0 10px;
+}
