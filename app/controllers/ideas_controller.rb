@@ -15,35 +15,33 @@ class IdeasController < ApplicationController
 
   def create
     @category_idea = CategoryIdea.new(category_idea_params)
-      if @category_idea.valid?
-        @category_idea.save
-        sucssess_status_code
-      else
-        failed_status_code
-      end
+    if @category_idea.valid?
+      @category_idea.save
+      sucssess_status_code
+    else
+      failed_status_code
+    end
   end
 
+  private
 
-
-private
   def category_idea_params
     params.require(:category_idea).permit(:name, :body)
   end
 
   def sucssess_status_code
-    render status: 201, json: { status: 201, message: 'Created' }
+    redirect_to root_path, status: :created
   end
 
   def failed_status_code
-    render status: 422, json: { status: 422, message: 'Unprocessable Entity' }
+    render :new, status: 422
   end
-  
+
   def search_idea
-      @p = Idea.ransack(params[:q])
+    @p = Idea.ransack(params[:q])
   end
 
   def set_category
     @categorys = Category.all
   end
-
 end

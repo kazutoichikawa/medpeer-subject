@@ -22,4 +22,3 @@ RSpec.describe CategoryIdea, type: :model do
     end
   end
 end
-

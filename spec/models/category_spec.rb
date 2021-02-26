@@ -14,7 +14,7 @@ RSpec.describe Category, type: :model do
       @category.save
       another_category = FactoryBot.build(:category)
       another_category.valid?
-      expect(another_category.errors.full_messages).to include("Name has already been taken")
+      expect(another_category.errors.full_messages).to include('Name has already been taken')
     end
   end
 end
