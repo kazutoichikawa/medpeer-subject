@@ -20,5 +20,4 @@ class CategoryIdea
     Idea.create(body: body, category_id: category.id)
     end
   end
-
 end

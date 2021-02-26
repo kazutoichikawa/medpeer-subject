@@ -21,6 +21,7 @@
   <ul>
   <% @ideas.each do |idea| %>
   <li class='detail'>
+  <div>id：<%= idea.id %></div>
   <div>カテゴリ名：<%= idea.category.name %></div>
   <div>アイデア詳細：<%= idea.body %></div>
   </li>
