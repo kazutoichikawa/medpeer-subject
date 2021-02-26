@@ -1,6 +1,11 @@
 class IdeasController < ApplicationController
+  before_action :search_idea, only: [:index, :search]
   def index
-    idea = Idea.all
+    @ideas = Idea.all
+  end
+
+  def search
+    @results = @p.result.includes(:category)
   end
 
   def new
@@ -17,9 +22,7 @@ class IdeasController < ApplicationController
       end
   end
 
-  def search
-  end
-end
+
 
 private
   def category_idea_params
@@ -34,3 +37,8 @@ private
     render status: 422, json: { status: 422, message: 'Unprocessable Entity' }
   end
   
+  def search_idea
+      @p = Category.ransack(params[:q])
+  end
+
+end
