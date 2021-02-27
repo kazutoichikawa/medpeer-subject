@@ -1,9 +1,6 @@
 class IdeasController < ApplicationController
-  
-
   def index
     category = params[:name]
-    
     if category.present?
       target_category = Category.where(name: category).first
       if target_category.nil?
@@ -45,6 +42,6 @@ class IdeasController < ApplicationController
   end
 
   def not_found_status_code
-    render :text => "error", :status => 404
+    render text: 'error', status: 404
   end
 end
