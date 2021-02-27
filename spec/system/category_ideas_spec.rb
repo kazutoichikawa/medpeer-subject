@@ -6,7 +6,7 @@ RSpec.describe 'アイデア投稿', type: :system do
   end
 
   context 'アイデア投稿ができるとき' do
-    it '正しい情報を入力すればアイデア投稿ができてステータスコード201が返ってくる' do
+    it '正しい情報を入力すればアイデア投稿ができる' do
       visit root_path
       expect(page).to have_content('アイデアを登録')
       visit new_idea_path
@@ -15,11 +15,11 @@ RSpec.describe 'アイデア投稿', type: :system do
       expect  do
         find('input[name="commit"]').click
       end.to change { Idea.count }.by(1)
-      expect(page).to have_content('201')
+      expect(page).to have_content('You are being redirected.')
     end
   end
   context 'アイデア投稿ができないとき' do
-    it '誤った情報ではアイデア投稿ができずにステータスコード422が返ってくる' do
+    it '誤った情報ではアイデア投稿ができない' do
       visit root_path
       expect(page).to have_content('アイデアを登録')
       visit new_idea_path
@@ -28,7 +28,6 @@ RSpec.describe 'アイデア投稿', type: :system do
       expect  do
         find('input[name="commit"]').click
       end.to change { Idea.count }.by(0)
-      expect(page).to have_content('422')
     end
   end
 end
