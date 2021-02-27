@@ -1,12 +1,21 @@
 class IdeasController < ApplicationController
-  before_action :search_idea, only: [:index, :search]
-  before_action :set_category, only: [:index, :search]
   def index
     @ideas = Idea.all
   end
 
   def search
-    @results = @p.result.includes(:category)
+    category = params[:name]
+    
+    if category.present?
+      target_category = Category.where(name: category).first
+      if target_category.nil?
+        not_found_status_code
+      else
+        @results = Idea.where(category_id: target_category.id)
+      end
+    else
+      @results = Idea.all
+    end
   end
 
   def new
@@ -37,11 +46,7 @@ class IdeasController < ApplicationController
     render :new, status: 422
   end
 
-  def search_idea
-    @p = Idea.ransack(params[:q])
-  end
-
-  def set_category
-    @categorys = Category.all
+  def not_found_status_code
+    render :text => "error", :status => 404
   end
 end
