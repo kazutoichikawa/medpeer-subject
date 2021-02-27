@@ -7,12 +7,12 @@
 <div class='search-category'>
   <%= form_with url: search_path, method: :get, local: true do |f| %>
       <div class="search-form-title">
-      <%= f.label :category_id_eq, 'カテゴリを指定' %>
+        <%= f.label :name, 'カテゴリを指定' %>
       </div>
-      <div class="search-form">
-        <%= f.text_field :name, class: 'search-form', placeholder:'カテゴリ名を入力してください' %>
+      
+        <%= f.text_field :name, class: 'search-form', placeholder:'カテゴリ名を入力' %>
         <%= f.submit '検索', class: 'submit-button' %>
-      </div>
+      
   <% end %>
 </div>
 
