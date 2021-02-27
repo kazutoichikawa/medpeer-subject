@@ -5,9 +5,9 @@
 </div>
 
 <div class='search-category'>
-  <%= form_with url: search_path, method: :get, local: true do |f| %>
+  <%= form_with url: ideas_path, method: :get, local: true do |f| %>
       <div class="search-form-title">
-        <%= f.label :name, 'カテゴリを指定' %>
+        <%= f.label :name, 'カテゴリを取得' %>
       </div>
       
         <%= f.text_field :name, class: 'search-form', placeholder:'カテゴリ名を入力' %>
@@ -16,18 +16,18 @@
   <% end %>
 </div>
 
-<div class='idea-list-title'>アイデア一覧</div>
-
-<div class='idea-list'>
-  <ul>
-  <% @ideas.each do |idea| %>
-  <li class='detail'>
-  <div>id：<%= idea.id %></div>
-  <div>カテゴリ名：<%= idea.category.name %></div>
-  <div>アイデア詳細：<%= idea.body %></div>
-  </li>
-
+<% if @results.nil? %>
+<h1 class='search-title'>取得結果</h1>  
+<div>指定されたカテゴリは見つかりませんでした</div>
+<% else %>
+<h1 class='search-title'>取得結果</h1>  
+<ul>
+  <% @results.each do |result| %>
+    <li class='detail'>
+      <div>id：<%= result.id %></div>
+      <div>カテゴリ名：<%= result.category.name %></div>
+      <div>アプリ詳細：<%= result.body %></div>
+    </li>
   <% end %>
-  </ul>
-<div>
-
+<% end %>
+</ul>

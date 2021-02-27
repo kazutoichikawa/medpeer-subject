@@ -1,9 +1,7 @@
 class IdeasController < ApplicationController
-  def index
-    @ideas = Idea.all
-  end
+  
 
-  def search
+  def index
     category = params[:name]
     
     if category.present?

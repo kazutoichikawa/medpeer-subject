@@ -26,14 +26,10 @@
   margin: 10px 0 5px 20px ;
 }
 
-.idea-list-title {
-  margin-left: 15px;
-  width: 150px;
+.search-title {
   border-bottom: 1px solid #666666;
-}
-
-.idea-list {
-  margin-left: 5px;
+  width: 150px;
+  margin: 5px 0 0 15px;
 }
 
 .detail {
